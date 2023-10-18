@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: black;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  color: #e8e8e8;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.content .heading {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.content .para {
+  line-height: 1.5;
+}
+
+.content .btn {
+  color: #e8e8e8;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
+  z-index: -1;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card:hover::before {
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: none;
+}
+
+.card:hover .btn {
+  color: #212121;
+  background: #e8e8e8;
+}
+
+.content .btn:hover {
+  outline: 2px solid #e8e8e8;
+  background: transparent;
+  color: #e8e8e8;
+}
+
+.content .btn:active {
+  box-shadow: none;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+   .page-holder {
+    min-height: 100vh;
+}
+
+    .bg-cover {
+        background-size: cover !important;
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>Astronomy</title>
+</head>
+<form method="POST">
+    {% csrf_token %}
+    <div class="wrap">
+   <div class="search"style="display: flex; flex-direction: column; width: 100%; margin-top: 150px;">
+        <h2 style="color: whitesmoke">Welcome to Astronomy picture of the day</h2>
+      <input type="date" class="searchTerm" placeholder="Enter a date in the format YYYY-MM-DD eg 2023-05-12" name="nasa">
+       <button type="submit" class="searchButton" style="width: 100px;font-size: medium; font-family: DialogInput;">Search</button>
+        <i class="fa fa-search"></i>
+     </button>
+       <div class="card" style="height: 800px; width: 500px;">
+  <div class="content">
+    <p class="heading">{{ title }}</p>
+      <p class="para">
+      {{ description }}
+    </p>
+    <a href="{{ picture }}" class="btn button" target="_blank">View Photo</a>
+  <p style="color: whitesmoke"> 2023&copy;JOHN GACHARA - SOFTWARE ENGINEER</p>
+  </div>
+</div>
+   </div>
+</div>
+</form>
+
+{% load static %}
+<div style="background: url({% static 'picture.jpg' %}); height: 1300px" class="page-holder bg-cover" >
+
+
+
+    </header>
+
+
+
+  </div>
+</div>
+<body>
+</html>
